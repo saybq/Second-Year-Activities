@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class GuessWhat_Dolor_Clint {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int guess, BetAmount, slotWin ,balance = 10;
+        
+
+        System.out.println("GUESSING GAME");
+        
+        while(balance != 0){
+            System.out.println("Balance: " + balance);
+            int randomNum = (int) (Math.random() * 20);
+            System.out.print("Enter 3-digit guess number: ");
+            guess = s.nextInt();
+            System.out.print("Enter Bet Amount          : ");
+            BetAmount = s.nextInt();
+
+        if(guess == randomNum){
+            balance = (balance - BetAmount) + (BetAmount * 3);
+            slotWin = BetAmount * 3;
+            System.out.println("JACKPOT");
+            System.out.println("Total WIN: " + slotWin);
+            System.out.println("Random NUmber: " + randomNum);
+        }else if(guess > randomNum){
+            balance = (balance - BetAmount) + (BetAmount * 2);
+            slotWin = BetAmount * 2;
+            System.out.println("IT'S YOUR LUCKY DAY");
+            System.out.println("Total WIN: " + slotWin);
+            System.out.println("Random NUmber: " + randomNum);
+        }else if(guess < randomNum){
+            balance = balance - BetAmount;
+            System.out.println("BANKCRUPT");
+            System.out.println("Total WIN: 0");
+            System.out.println("Random NUmber: " + randomNum);
+        }
+        
+        }
+        s.close();
+    }
+    
+}
