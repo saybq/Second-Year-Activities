@@ -1,0 +1,98 @@
+package GUI.Project1;
+
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+public class AdminLoginPanel extends JPanel implements ActionListener{
+    CardLayout cardLayout;
+    JPanel mainPanel;
+    JButton Back;
+    public AdminLoginPanel(CardLayout layout, JPanel panel){
+        this.cardLayout = layout;
+        this.mainPanel = panel;
+        setLayout(null);
+
+        JPanel leftP = new JPanel();
+        leftP.setBounds(0, 0, 350, 1000);     
+        leftP.setBackground(new Color(36, 33, 32));
+        leftP.setLayout(null);
+        add(leftP);
+
+        JPanel TopP = new JPanel();
+        TopP.setBounds(0,0,350,100);
+        TopP.setBackground(new Color(36, 33, 32));
+        TopP.setLayout(null);
+        leftP.add(TopP);
+
+        JLabel greetLabel = new JLabel("GOOD DAY");
+        greetLabel.setForeground(Color.white);
+        greetLabel.setBounds(125, 30, 200, 30);
+        greetLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        TopP.add(greetLabel);
+
+        Back = new JButton("Back");
+        Back.setBounds(100, 600, 180, 25);
+        Back.setBackground(Color.ORANGE);
+        Back.setForeground(Color.BLACK);
+        Back.setFocusPainted(false);
+        Back.addActionListener(this);
+        Back.setBorder(new LineBorder(Color.ORANGE, 2, true));
+        leftP.add(Back);
+        
+        JPanel rightP = new JPanel();
+        rightP.setBounds(350, 0, 650, 1000);
+        rightP.setBackground(new Color(39, 38, 38));
+        rightP.setLayout(null);
+        add(rightP);
+
+        JLabel LoginText = new JLabel("ADMIN LOGIN");
+        LoginText.setForeground(Color.white);
+        LoginText.setBounds(237, 150, 250, 50);
+        LoginText.setFont(new Font("Arial", Font.BOLD, 30));
+        rightP.add(LoginText);
+
+        JLabel userLabel = new JLabel("Username");
+        userLabel.setForeground(Color.white);
+        userLabel.setBounds(180, 210, 250, 50);
+        userLabel.setFont(new Font("Arial", Font.BOLD, 11));
+        rightP.add(userLabel);
+
+        JTextField userField = new JTextField();
+        userField.setBounds(180, 260, 300, 25);
+        userField.setBackground(Color.WHITE);
+        rightP.add(userField);
+
+        JLabel passLabel = new JLabel("Password");
+        passLabel.setForeground(Color.white);
+        passLabel.setBounds(180, 290, 250, 50);
+        passLabel.setFont(new Font("Arial", Font.BOLD, 11));
+        rightP.add(passLabel);
+
+        JTextField passField = new JTextField();
+        passField.setBounds(180, 330, 300, 25);
+        passField.setBackground(Color.WHITE);
+        rightP.add(passField);
+
+        JButton LogInButton = new JButton("LOGIN");
+        LogInButton.setBounds(180, 390, 300, 25);
+        LogInButton.setBackground(Color.ORANGE);
+        LogInButton.setForeground(Color.BLACK);
+        LogInButton.setFocusPainted(false);
+        LogInButton.setBorder(new LineBorder(Color.ORANGE, 2, true));
+        rightP.add(LogInButton);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == Back){
+            cardLayout.show(mainPanel, "dashboard");
+        }
+    }   
+}
