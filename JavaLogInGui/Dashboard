@@ -1,0 +1,69 @@
+package GUI.Project1;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Dashboard extends JPanel implements ActionListener {
+    JButton UserButton;
+    JButton AdminButton;
+    CardLayout cardLayout;
+    JPanel mainPanel;
+    public Dashboard(CardLayout layout, JPanel panel){
+        this.cardLayout = layout;
+        this.mainPanel = panel;
+        
+        setLayout(null);
+
+        JPanel leftP = new JPanel();
+        leftP.setBounds(0, 0, 350, 1000);
+        leftP.setBackground(new Color(36, 33, 32));
+        leftP.setLayout(null);
+        add(leftP);
+
+        JPanel rightP = new JPanel();
+        rightP.setBounds(350, 0, 650, 1000);
+        rightP.setBackground(new Color(39, 38, 38));
+        rightP.setLayout(null);
+        add(rightP);
+
+        JLabel OptionLabel = new JLabel("CHOOSE OPTION");
+        OptionLabel.setForeground(Color.white);
+        OptionLabel.setBounds(260, 150, 250, 50);
+        OptionLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        rightP.add(OptionLabel);
+
+        UserButton = new JButton("USER");
+        UserButton.setBounds(190, 230, 300, 50);
+        UserButton.setBackground(Color.ORANGE);
+        UserButton.setForeground(Color.BLACK);
+        UserButton.setFocusPainted(false);
+        UserButton.addActionListener(this);
+        UserButton.setBorder(new LineBorder(Color.ORANGE, 2, true));
+        rightP.add(UserButton);
+
+        AdminButton = new JButton("ADMIN");
+        AdminButton.setBounds(190, 300, 300, 50);
+        AdminButton.setBackground(Color.ORANGE);
+        AdminButton.setForeground(Color.BLACK);
+        AdminButton.setFocusPainted(false);
+        AdminButton.addActionListener(this);
+        AdminButton.setBorder(new LineBorder(Color.ORANGE, 2, true));
+        rightP.add(AdminButton);
+
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == UserButton){
+            cardLayout.show(mainPanel, "userpanel");
+        }else if(e.getSource() == AdminButton){
+            cardLayout.show(mainPanel, "adminpanel");
+        }
+    }
+}
