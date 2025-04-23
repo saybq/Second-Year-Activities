@@ -1,0 +1,30 @@
+package GUI.Project1;
+
+import java.awt.CardLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class LaunchFrame extends JFrame{
+    CardLayout cardLayout = new CardLayout();
+    JPanel mainPanel = new JPanel(cardLayout);
+    
+    LaunchFrame(){
+        setTitle("DASHBOARD");
+        setSize(1000,700);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Dashboard Dashboard = new Dashboard(cardLayout, mainPanel);
+        UserLogInPanel UserLogInPanel = new UserLogInPanel(cardLayout, mainPanel);
+        AdminLoginPanel AdminLoginPanel = new AdminLoginPanel(cardLayout, mainPanel);
+
+        mainPanel.add(Dashboard, "dashboard");
+        mainPanel.add(UserLogInPanel, "userpanel");
+        mainPanel.add(AdminLoginPanel, "adminpanel");
+
+        cardLayout.show(mainPanel, "dashboard");
+        add(mainPanel);
+        setVisible(true);
+    }
+}
